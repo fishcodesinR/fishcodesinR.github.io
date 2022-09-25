@@ -10,9 +10,7 @@ Metode time series fitting disebut sebagai metode yang lebih baik dibandingkan d
 
 Pendekatan ini selanjutnya lebih dikenal dengan sebutan Biomass Dynamic Model, dimana variasinya kebanyakan menggunakan perhitungan dari Schaefer (1954), Fox (1970) dan Pella-Tomlinson (1969). Saat ini `montiR` dibangun dengan model Schaefer yang dituliskan dengan
 
-```math
-B_{t+1} = {B_{t} + rB_{t} (1- {B_{t} \over K}) - C_{t}}
-```
+$B_{t+1} = {B_{t} + rB_{t} (1- {B_{t} \over K}) - C_{t}}$
 
 dimana:
 
@@ -26,7 +24,7 @@ $C_{t}$ = jumlah tangkapan (volume) pada tahun $t$
 
 dengan
 
-$$I_{t+1} = {C_{t} \over E_{t}} = q B_{t} e^\epsilon$$
+$I_{t+1} = {C_{t} \over E_{t}} = q B_{t} e^\epsilon$
 
 dimana: 
 
