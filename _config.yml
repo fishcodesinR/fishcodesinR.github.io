@@ -1,0 +1,33 @@
+### themes under jekyll
+# https://pages.github.com/themes/
+# https://github.com/topics/jekyll-themes
+
+### mmistakes: so-simple
+# remote_theme: "mmistakes/so-simple-theme@3.2.0"
+
+### mmistakes: minimal mistakes
+# remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+
+### minimal
+# remote_theme: pages-themes/minimal@v0.2.0
+# plugins:
+# - jekyll-remote-theme # add this line to the plugins list if you already have one
+
+### architect
+# remote_theme: pages-themes/architect@v0.2.0
+# plugins:
+# - jekyll-remote-theme # add this line to the plugins list if you already have one
+
+### cayman
+# remote_theme: pages-themes/cayman@v0.2.0
+# plugins:
+# - jekyll-remote-theme # add this line to the plugins list if you already have one
+
+### dinky
+# remote_theme: pages-themes/dinky@v0.2.0
+# plugins:
+# - jekyll-remote-theme # add this line to the plugins list if you already have one
+
+### just-the-docs
+remote_theme: just-the-docs/just-the-docs@v0.4.0.rc2
+title: Fish learns to code in R
