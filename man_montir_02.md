@@ -6,9 +6,9 @@ nav_order: 1
 
 ### Penghitungan Surplus production dengan asumsi non-equilibrium menggunakan data fitting
 
-Metode time series fitting disebut sebagai metode yang lebih baik dibandingkan dengan dua metode lain (metode equilibrium dan multiple regression) yang digunakan untuk melakukan estimasi parameter dalam model surplus produksi (Hilborn dan Walter, 1992; Polacheck, et al. 1993; Punt dan Hilborn, 1996). Disini akan dibahas langkah yang disarankan untuk melakukan analisis dengan data fitting untuk meningkatkan akurasi perhitungan MSY, Bmsy dan Emsy.
+Metode time series fitting dengan observation error disebut sebagai metode yang lebih baik dibandingkan dengan dua metode lain (metode equilibrium dengan linear regression maupun multiple regression) yang digunakan untuk melakukan estimasi parameter dalam model surplus produksi (Hilborn dan Walter, 1992; Polacheck, et al. 1993; Punt dan Hilborn, 1996), juga menghasilkan output yang lebih baik akurat dibanding dengan metode time series fitting dengan process error. Disini akan dibahas langkah yang disarankan untuk melakukan analisis dengan data fitting untuk meningkatkan akurasi perhitungan MSY, Bmsy dan Emsy.
 
-Pendekatan ini selanjutnya lebih dikenal dengan sebutan Biomass Dynamic Model, dimana variasinya kebanyakan menggunakan perhitungan dari Schaefer (1954), Fox (1970) dan Pella-Tomlinson (1969). Saat ini `montiR` dibangun dengan model Schaefer yang dituliskan dengan
+Pendekatan ini selanjutnya lebih dikenal dengan sebutan Biomass Dynamic Model, dimana variasinya banyak menggunakan perhitungan dari Schaefer (1954), Fox (1970) dan Pella-Tomlinson (1969). Saat ini `montiR` dibangun dengan model Schaefer yang dituliskan dengan
 
 $B_{t+1} = {B_{t} + rB_{t} (1- {B_{t} \over K}) - C_{t}}$
 
@@ -50,7 +50,7 @@ df <- data.frame(year=c(1934:1955),
 
 #### a. Data plotting
 
-Langkah paling penting sebelum melakukan analisis data adalah memeriksa apakah data yang akan digunakan memenuhi persyaratan dan asumsi yang dibutuhkan untuk analisis biomass dynamic model, termasuk memilih jenis langkah apa yang harus dilakukan ketika data yang dibutuhkan tidak memenuhi asumsi. Para ahli statistik selalu memulai analisisnya dengan, "Plot your data!". 
+Langkah paling penting sebelum melakukan analisis data adalah memeriksa apakah data yang akan digunakan memenuhi persyaratan dan asumsi yang dibutuhkan untuk analisis biomass dynamic model, termasuk memilih jenis langkah apa yang harus dilakukan ketika data yang dibutuhkan tidak memenuhi asumsi. Para ahli statistik dan pemodelan matematik selalu memulai analisisnya dengan, "Plot your data!". 
 
 Langkah untuk melihat grafik jumlah tangkapan (catch), upaya (effort) serta catch per unit of effort (CPUE)/indeks kelimpahan dari data yang dimiliki dapat dilakukan dengan mudah menggunakan kode dan contoh data yang tersedia sebagaimana berikut:
 
@@ -60,7 +60,7 @@ plotInit(df=df.onewaytrip0)
 
 ```
 
-Disini kita akan melihat dua jenis data yang biasanya terdapat pada perikanan, goodcontrast dan onewaytrip. Biomass dynamic model dengan menggunakan metode data fitting mensyaratkan data yang memiliki kontras yang cukup pada Catch per Unit Effort (CPUE), ditunjukkan dengan adanya representasi pola turun dan naik serta paling tidak memiliki 20 tahun entry untuk tangkapan dan upaya (pers comm, Ray Hilborn). Contoh dari data yang memiliki kontras yang cukup dapat dilihat pada `df.goodcontrast0` dan `df.namibianCatch`, dimana contoh plot dari `df.goodcontrast0` dapat dilihat berikut:
+Disini kita akan melihat dua jenis data yang biasanya terdapat pada perikanan, goodcontrast dan onewaytrip. Biomass dynamic model dengan menggunakan metode data fitting mensyaratkan data yang memiliki kontras yang cukup pada Catch per Unit Effort (CPUE), ditunjukkan dengan adanya kontras data yang baik (i.e. representasi pola turun dan naik) serta paling tidak memiliki 20 tahun entry untuk tangkapan dan upaya (Punt & Hilborn, 1996; Magnusson & Hilborn, 2007). Contoh dari data yang memiliki kontras yang cukup dapat dilihat pada `df.goodcontrast0` dan `df.namibianCatch`, dimana contoh plot dari `df.goodcontrast0` dapat dilihat berikut:
 
 ![Tipe data dengan good contrast](/img/img_goodcontrast0.png)
 
@@ -100,32 +100,13 @@ Proses estimasi parameter ini dilakukan dengan langkah sebagai berikut:
 ```markdown
 library('montiR')
 
-K <- 1700
-B0 <- K
-r <- 0.3
-q <- 0.0003
-sigma <- 0.1
-inpars <- c(log(K), log(B0), log(r), log(q), log(sigma))
-
-> melakukan optimasi 
-fit <- optim(par=inpars,
-             fn=Par.min,
-             df=df.namibianCatch,
-             method="Nelder-Mead")
-
-Par.vals <- data.frame(SPpar = c("K", "B0", "r", "q", "sigma"),
-                       init_pars = c(K, B0, r, q, sigma),
-                       fitted_pars = exp(fit$par))
-Par.vals
-  SPpar init_pars  fitted_pars
-1     K   1.1e+03 2.326238e+03
-2    B0   1.1e+03 1.105251e+03
-3     r   1.3e+00 5.182160e-01
-4     q   1.8e-03 8.317058e-04
-5 sigma   1.0e-01 2.200941e-01
-
-> memeriksa apakah sudah menghasilkan grafik yang fit
-Par_init(inpars=exp(fit$par), df=df.namibianCatch)
+calc.MSY(K=1000,
+         B0=1000,
+         r=0.2,
+         q=0.00025,
+         s.sigma=0.1,
+         df=df.goodcontrast,
+         plot=TRUE)
 ```
 
 Disini angka awal yang didapatkan dari proses sebelumnya kemudian disimpan sebagai inpars. Karena kita tahu bahwa parameter ini pasti bernilai positif, maka angka awal disimpan dalam bentuk log sebelum masuk didalam function. Setelah proses optimasi dengan perhitungan Maximum Likelihood Estimation selesai dilakukan, angka yang didapat masih dalam bentuk logarithmic sehingga perlu dilakukan backtransform. Angka awal dan angka akhir estimasi parameter K, B0, r, q dan sigma (observation error) hasil perhitungan maximum likelihood estimation dapat dilihat dengan melihat `Par.vals` dan grafik hasil optimasi dapat dilihat menggunakan function `Par_init`.
@@ -136,16 +117,17 @@ Data frame `Par.vals` menyimpan informasi angka awal (`init_pars`) dan angka has
 
 Untuk data yang memiliki tipe one way trip, input yang digunakan dalam optimasi perlu disesuaikan terlebih dahulu. Penjelasan lebih lanjut untuk metode ini akan ditulis beberapa waktu kedepan. Selain itu, tool ini sudah disesuaikan untuk kebutuhan data yang terbatas (dapat mengakomodasi hilangnya input data upaya penangkapan) serta sudah memperhitungkan kesalahan dalam pengambilan data (observation error). 
 
-#### c. Menghitung reference point untuk pengelolaan
-
-Hasil optimasi diatas menghasilkan parameter biomass dynamic model, yang perlu dihitung lebih lanjut untuk menghasilkan angka MSY, Bmsy dan Emsy. Angka-angka tersebut dapat dihasilkan menggunakan
-
-```markdown
-Bmsy <- K/2
-MSY <- (r*K)/4
-Emsy <- r/(2*q)
-```
-
-#### d. Menghitung standard error dari reference point
+#### c. Menghitung standard error dari reference point
 
 Tool ini mengestimasi jumlah stok ikan yang lestari (Bmsy), jumlah tangkapan ikan lestari (MSY) dan upaya penangkapan ikan lestari (Emsy) serta menghitung standard error menggunakan data runut waktu dengan asumsi non-equilibrium untuk model Schaefer dan Fox.
+
+Penghitungan standard error dari reference point dapat dilakukan dengan
+```markdown
+library(montiR)
+
+calc.SE(MSY=50,
+        Emsy=400,
+        Bmsy=500,
+        s.sigma=0.1,
+        df=df.onewaytrip)
+```
