@@ -30,4 +30,5 @@ Grafik proyeksi akan muncul ketika `plot=TRUE` dimana garis proyeksi berwarna bi
 
 ![Perbandingan fitting dari data Observation dan Estimation](/img/img_goodcontrastproyeksi.png)
 
+{: .catatan }
 Cara penghitungan jumlah upaya tangkap yang diperbolehkan termasuk dalam kelompok constant catch harvest strategy. Penggunaan harvest strategy ini perlu dilakukan dengan hati-hati dan membutuhkan pengumpulan data yang sering, apalagi jika pendugaan stok ikan dilakukan menggunakan data hasil tangkap dan upaya seperti yang dilakukan diatas. Harvest strategy ini memberikan kepastian informasi berapa jumlah tangkapan atau berapa jumlah upaya yang dapat digunakan sehingga sangat bermanfaat bagi pengambil kebijakan dan industri yang membutuhkan kepastian investasi. Tetapi perlu juga diketahui bahwa metode berpotensi dapat mendorong habisnya ikan terutama ketika terjadi ketidakpastian di alam (Punt 2010)
