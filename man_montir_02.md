@@ -130,9 +130,11 @@ Ketika `plot=TRUE`, maka secara otomatis akan ditampilkan grafik hasil dimana ga
 
 Data frame `$Parameter` menyimpan angka estimasi hasil optimasi (`fitted_pars`). Sebagai panduan untuk memeriksa hasil parameter, angka K biasanya selalu lebih tinggi dibanding B0, angka r seharusnya berada pada rentang antara 0-1 dan angka q biasanya berada pada rentang antara 0-0.1.
 
-{: .important } Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, perhitungan dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
+{: .catatan }
+Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, perhitungan dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
 
 ```markdown
+
 inpars <- c(log(K), log(B0), log(r), log(q), log(s.sigma))
 
 fit <- optim(par = inpars,
