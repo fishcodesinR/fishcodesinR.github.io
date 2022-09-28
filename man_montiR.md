@@ -10,12 +10,19 @@ nav_order: 2
 
 Penjelasan mengenai latar belakang, kelebihan dan kekurangan dari tiap metode surplus produksi juga akan dijelaskan sebagai pendahuluan untuk menjelaskan mengenai evolusi metode surplus produksi hingga didapatkan metode yang menghasilkan estimasi lebih baik dengan asumsi non-equilibrium yang dihitung dengan data fitting menggunakan observation error (Polacheck et al., 1993).
 
+Diasumsikan pengguna package ini sudah mengetahui dasar penggunaan R dan sudah menginstal R beserta Rstudio di komputer masing-masing. Diharapkan pengguna paling tidak sudah membaca Chapter 1 dari [buku online ini](https://bookdown.org/moh_rosidi2610/Metode_Numerik/intro.html). 
 
 ## Instalasi
 Anda dapat mengunduh dan menginstal package ini dengan mengetikkan kode ini pada konsole di Rstudio:
 ```
 devtools::install_github("habeebollah/montiR")
 ```
+
+Setelah terinstal, setiap kali akan menjalankan package ini pengguna perlu mengaktifkan dengan mengetikkan
+```markdown
+library("montiR")
+```
+
 
 ## Referensi
 Hilborn, Ray, and Carl J. Walters, eds. Quantitative fisheries stock assessment: choice,
