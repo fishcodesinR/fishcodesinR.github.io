@@ -2,7 +2,6 @@
 layout: default
 title: Tentang
 nav_order: 3
-permalink: /
 ---
 
 
