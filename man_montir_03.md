@@ -5,9 +5,9 @@ nav_order: 1
 ---
 
 
-### Membuat proyeksi atas kebijakan reference point berdasar tingkat pemanfaatan perikanan
+## Membuat proyeksi atas kebijakan reference point berdasar tingkat pemanfaatan perikanan
 
-Tool ini akan membuat grafik proyeksi biomass per biomass at msy (B/Bmsy) dan fishing mortality per fishing mortality at msy (F/Fmsy) sebagai panduan untuk melihat kebijakan yang akan dibuat berdasarkan MSY dan Emsy sebagai reference point. Proyeksi dibuat dengan pendekatan stochastic dengan menunjukkan rentang kepercayaan yang dihitung dari banyaknya simulasi yang dilakukan.
+Tool ini akan membuat grafik proyeksi biomass per biomass at msy (B/Bmsy) dan fishing mortality per fishing mortality pada msy (F/Fmsy) sebagai panduan untuk melihat kebijakan yang akan dibuat berdasarkan MSY dan Emsy sebagai reference point. Proyeksi dibuat dengan pendekatan stochastic dengan menunjukkan rentang kepercayaan yang dihitung dari banyaknya simulasi yang dilakukan.
 
 Jumlah tangkapan yang diperbolehkan dapat ditetapkan sesuai kebutuhan, termasuk juga dapat memanfaatkan hasil perhitungan tingkat pemanfaatan dari langkah sebelumnya untuk menghitung berapa idealnya jumlah tangkapan ditetapkan berdasar atas aturan atau kesepakatan yang dibuat dalam pengelolaan.
 
@@ -35,4 +35,4 @@ Grafik proyeksi akan muncul ketika `plot=TRUE` dengan garis proyeksi berwarna bi
 Selain menampilkan grafik diatas, proyeksi ini juga akan menampilkan angka hasil perhitungan yang dapat dilihat pada konsol.
 
 {: .catatan }
-Cara penghitungan jumlah upaya tangkap yang diperbolehkan termasuk dalam kelompok constant catch harvest strategy. Penggunaan harvest strategy ini perlu dilakukan dengan hati-hati dan membutuhkan pengumpulan data yang sering, apalagi jika pendugaan stok ikan dilakukan menggunakan data hasil tangkap dan upaya seperti yang dilakukan diatas. Harvest strategy ini memberikan kepastian informasi berapa jumlah tangkapan atau berapa jumlah upaya yang dapat digunakan sehingga sangat bermanfaat bagi pengambil kebijakan dan industri yang membutuhkan kepastian investasi. Tetapi perlu juga diketahui bahwa metode ini berpotensi dapat mendorong habisnya ikan terutama ketika terjadi ketidakpastian di alam (Punt 2010)
+Cara penghitungan dan proyeksi jumlah tangkapan yang diperbolehkan diatas termasuk dalam kelompok constant catch harvest strategy. Penggunaan harvest strategy jenis ini perlu dilakukan dengan hati-hati dan membutuhkan pengumpulan data yang sering, apalagi jika pendugaan stok ikan dilakukan menggunakan data hasil tangkap dan upaya seperti yang dilakukan diatas. Harvest strategy ini memberikan kepastian informasi berapa jumlah tangkapan atau berapa jumlah upaya yang dapat digunakan sehingga sangat bermanfaat bagi pengambil kebijakan dan industri yang membutuhkan kepastian investasi. Tetapi perlu juga diketahui bahwa metode ini berpotensi dapat mendorong habisnya ikan terutama ketika terjadi ketidakpastian di alam (Punt 2010).
