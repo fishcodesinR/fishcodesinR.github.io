@@ -2,11 +2,11 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+description: "Fish Codes in R"
 permalink: /
 ---
 
-### Home
+## Home
 
 Web ini berisi kumpulan fungsi untuk pendugaan stok dalam mendukung pengelolaan perikanan yang dibangun menggunakan R
 
