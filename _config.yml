@@ -29,5 +29,6 @@
 # - jekyll-remote-theme # add this line to the plugins list if you already have one
 
 ### just-the-docs
+# https://just-the-docs.github.io/just-the-docs/
 remote_theme: just-the-docs/just-the-docs@v0.4.0.rc2
 title: Fish learns to code in R
