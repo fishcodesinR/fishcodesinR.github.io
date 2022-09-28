@@ -11,7 +11,7 @@ Tool ini akan membuat grafik proyeksi biomass per biomass at msy (B/Bmsy) dan fi
 
 Jumlah tangkapan yang diperbolehkan dapat ditetapkan sesuai kebutuhan, termasuk juga dapat memanfaatkan hasil tingkat pemanfaatan yang dihasilkan dari langkah sebelumnya untuk menghitung berapa idealnya jumlah tangkapan ditetapkan berdasar atas aturan atau kesepakatan yang dibuat dalam pengelolaan.
 
-Contoh penggunaan penghitungan ini mengasumsikan akan dibuat proyeksi sejauh 30 tahun ke depan dengan jumlah ulangan simulasi sebanyak 100 kali dan direncanakan pengelolaan akan menggunakan `TAC = 0.8MSY`:
+Contoh penggunaan penghitungan ini mengasumsikan akan dibuat proyeksi sejauh 30 tahun ke depan dengan jumlah ulangan simulasi sebanyak 100 kali dan direncanakan pengelolaan akan menggunakan TAC = 0.8MSY:
 ```markdown
 fit <- calc.MSY(K=1000,
                 B0=1000,
