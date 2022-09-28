@@ -64,6 +64,7 @@ Disini kita akan melihat dua jenis data yang biasanya terdapat pada perikanan, g
 ![Tipe data dengan good contrast](/img/img_goodcontrast0.png)
 
 Contoh data yang tidak memiliki kontras yang baik dapat dilihat pada `df.onewaytrip0` dan `df.eastpacCatch`. Dapat dilihat bahwa data tangkapan dan upaya memiliki pola meningkat dengan tidak memiliki pola menurun sebagaimana yang ditunjukkan dari plot `df.onewaytrip0` berikut:
+
 ![Tipe data one way trip](/img/img_onewaytrip0.png)
 
 Jenis data yang berbeda harus dianalisis menggunakan cara yang berbeda pula. Hal ini akan dijelaskan lebih lanjut di bagian selanjutnya.
