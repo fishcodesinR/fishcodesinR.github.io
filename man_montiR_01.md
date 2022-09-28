@@ -1,5 +1,5 @@
 ---
-title: Evolusi
+title: Perkembangan
 parent: Panduan montiR
 nav_order: 1
 ---
