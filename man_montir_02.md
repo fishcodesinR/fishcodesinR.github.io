@@ -69,7 +69,6 @@ Contoh data yang tidak memiliki kontras yang baik dapat dilihat pada `df.onewayt
 
 {: .catatan }
 Grafik berikut menunjukkan pentingnya jumlah dan jenis data yang memiliki kontras, dimana idealnya data berikut akan menghasilkan MSY dengan angka 50. Dapat dilihat pada panel sebelah kiri bahwa data yang memiliki kontras yang baik dengan runtun waktu sebanyak 20 tahun atau lebih akan menghasilkan akurasi yang lebih baik dengan deviasi yang lebih kecil, berbeda halnya dengan data yang memiliki runtun waktu 10 tahun. Ketika menggunakan data dengan tipe one-way trip sebagaimana pada panel sebelah kanan, dapat dilihat bahwa metode data fitting biasa akan menghasilkan akurasi analisis yang melenceng jauh meskipun menggunakan jumlah data yang cukup.
-
 ![Simulasi hasil analisis MSY menggunakan data good contrast dan one-way trip dengan data fitting konvensional](/img/img_goodcontrastonewaytripMSY.png)
 
 Jenis data yang berbeda harus dianalisis menggunakan cara yang berbeda pula. Hal ini akan dijelaskan lebih lanjut di bagian selanjutnya.
