@@ -133,13 +133,17 @@ Data frame `$Parameter` menyimpan angka estimasi hasil optimasi (`fitted_pars`).
 {: .catatan }
 Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, proses optimasi dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
 
+{: .catatan } Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, proses optimasi dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
+
+{: .catatan } Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini
+
 ```markdown
 
 inpars <- c(log(K), log(B0), log(r), log(q), log(s.sigma))
 
 fit <- optim(par = inpars,
              fn = Par.min,
-             df = df,
+             df = df.goodcontrast,
              method = "L-BFGS-B",
              lower = xxxx,
              upper = xxxx
