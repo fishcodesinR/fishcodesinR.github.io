@@ -4,7 +4,7 @@ parent: Panduan montiR
 nav_order: 1
 ---
 
-### Penghitungan Surplus production dengan asumsi non-equilibrium menggunakan data fitting
+## Penghitungan Surplus production dengan asumsi non-equilibrium menggunakan data fitting
 
 Metode time series fitting dengan observation error disebut sebagai metode yang lebih baik dibandingkan dengan dua metode lain (metode equilibrium dengan linear regression maupun multiple regression) yang digunakan untuk melakukan estimasi parameter dalam model surplus produksi, termasuk juga menghasilkan estimasi yang lebih akurat dibanding dengan metode time series fitting dengan process error (Hilborn dan Walter, 1992; Polacheck, et al. 1993; Punt dan Hilborn, 1996). Disini akan dibahas langkah yang disarankan untuk melakukan analisis dengan data fitting untuk meningkatkan akurasi perhitungan MSY, Bmsy dan Emsy.
 
@@ -48,7 +48,7 @@ df <- data.frame(year=c(1934:1955),
 ```
 
 
-#### a. Data plotting
+## a. Data plotting
 
 Langkah paling penting sebelum melakukan analisis adalah memeriksa apakah data yang akan digunakan memenuhi persyaratan dan asumsi yang dibutuhkan untuk analisis biomass dynamic model, termasuk memilih jenis langkah apa yang harus dilakukan ketika data yang dibutuhkan tidak memenuhi asumsi. Para ahli statistik dan pemodelan matematik selalu memulai analisisnya dengan, "Plot your data!". 
 
@@ -67,12 +67,15 @@ Contoh data yang tidak memiliki kontras yang baik dapat dilihat pada `df.onewayt
 
 ![Tipe data one way trip](/img/img_onewaytrip0.png)
 
+{: .catatan }
+![Simulasi hasil analisis MSY menggunakan data good contrast dan one-way trip dengan data fitting konvensional](/img/img_goodcontrastonewaytripMSY.png)Grafik berikut menunjukkan pentingnya jumlah dan jenis data yang memiliki kontras, dimana idealnya data berikut akan menghasilkan MSY dengan angka 50. Dapat dilihat pada panel sebelah kiri bahwa data yang memiliki kontras yang baik dengan runtun waktu sebanyak 20 tahun atau lebih akan menghasilkan akurasi yang lebih baik dengan deviasi yang lebih kecil, berbeda halnya dengan data yang memiliki runtun waktu 10 tahun. Ketika menggunakan data dengan tipe one-way trip, dapat dilihat bahwa metode data fitting biasa akan menghasilkan akurasi analisis yang melenceng jauh meskipun menggunakan jumlah data yang cukup.
+
 Jenis data yang berbeda harus dianalisis menggunakan cara yang berbeda pula. Hal ini akan dijelaskan lebih lanjut di bagian selanjutnya.
 
 Pada tahap ini diharapkan data sudah melalui langkah data standardization yang biasanya diolah dengan menggunakan Generalized Linear Model.
 
 
-#### b. Estimasi parameter surplus production dengan data fitting
+## b. Estimasi parameter surplus production dengan data fitting
 
 Tool ini melakukan estimasi parameter K, B0, r, q dan menentukan jumlah tangkapan ikan lestari (MSY), biomassa ikan lestari (Bmsy), serta upaya penangkapan ikan lestari (Emsy) menggunakan data runut waktu dengan asumsi non-equilibrium untuk model Schaefer.
 
@@ -155,7 +158,7 @@ fit <- optim(par = inpars,
 
 Untuk data yang memiliki tipe one way trip, input yang digunakan dalam optimasi perlu disesuaikan terlebih dahulu. Penjelasan lebih lanjut untuk metode ini akan ditulis beberapa waktu kedepan. Selain itu, tool ini sudah disesuaikan untuk kebutuhan data yang terbatas (dapat mengakomodasi hilangnya sedikit input data upaya penangkapan). 
 
-#### c. Menghitung standard error dari reference point
+## c. Menghitung standard error dari reference point
 
 Tool ini mengestimasi jumlah stok ikan yang lestari (Bmsy), jumlah tangkapan ikan lestari (MSY) dan upaya penangkapan ikan lestari (Emsy) serta menghitung standard error menggunakan data runut waktu dengan asumsi non-equilibrium untuk model Schaefer.
 
