@@ -57,7 +57,6 @@ Langkah untuk melihat grafik jumlah tangkapan (catch), upaya (effort) serta catc
 ```markdown
 plotInit(df=df.goodcontrast0)
 plotInit(df=df.onewaytrip0)
-
 ```
 
 Disini kita akan melihat dua jenis data yang biasanya terdapat pada perikanan, goodcontrast dan onewaytrip. Biomass dynamic model dengan menggunakan metode data fitting mensyaratkan data yang memiliki kontras yang cukup pada Catch per Unit Effort (CPUE), ditunjukkan dengan adanya kontras data yang baik (i.e. memiliki representasi pola turun dan naik) serta paling tidak memiliki 20 tahun entry untuk tangkapan dan upaya (Punt & Hilborn, 1996; Magnusson & Hilborn, 2007). Contoh dari data yang memiliki kontras yang cukup dapat dilihat pada `df.goodcontrast0` dan `df.namibianCatch`, dimana contoh plot dari `df.goodcontrast0` dapat dilihat berikut:
@@ -100,9 +99,9 @@ Proses estimasi parameter ini dilakukan dengan langkah sebagai berikut:
 ```markdown
 library('montiR')
 
-calc.MSY(K=1700,
-         B0=1700,
-         r=0.3,
+calc.MSY(K=1000,
+         B0=1000,
+         r=0.2,
          q=0.00025,
          s.sigma=0.1,
          df=df.goodcontrast,
@@ -123,7 +122,6 @@ $Parameter
 $MSY
        MSY     Emsy     Bmsy E.rate_MSY E.rate_Emsy
 1 44.64659 326.4116 497.8777  0.3886082  0.05315383
-
 ```
 
 Ketika `plot=TRUE`, maka secara otomatis akan ditampilkan grafik hasil dimana garis estimation (warna merah) akan fit dengan garis data observation (warna biru).
@@ -132,27 +130,25 @@ Ketika `plot=TRUE`, maka secara otomatis akan ditampilkan grafik hasil dimana ga
 
 Data frame `$Parameter` menyimpan angka estimasi hasil optimasi (`fitted_pars`). Sebagai panduan untuk memeriksa hasil parameter, angka K biasanya selalu lebih tinggi dibanding B0, angka r seharusnya berada pada rentang antara 0-1 dan angka q biasanya berada pada rentang antara 0-0.1.
 
-{: .important }
-> Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, perhitungan dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
-> 
-> ```markdown
->   inpars <- c(log(K), log(B0), log(r), log(q), log(s.sigma))
+{: .important } Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, perhitungan dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
 
-  fit <- optim(par = inpars,
-               fn = Par.min,
-               df = df,
-               method = "L-BFGS-B",
-               lower = xxxx,
-               upper = xxx
-  )
+```markdown
+inpars <- c(log(K), log(B0), log(r), log(q), log(s.sigma))
 
-  vals <- exp(fit$par)
-  res <- list("Parameter" = data.frame("SPpar" = c("K", "B0", "r", "q", "s.sigma"),
-                                       "fitted_pars" = vals
-  )
-  res
-> ```
->
+fit <- optim(par = inpars,
+             fn = Par.min,
+             df = df,
+             method = "L-BFGS-B",
+             lower = xxxx,
+             upper = xxxx
+ )
+
+ vals <- exp(fit$par)
+ res <- list("Parameter" = data.frame("SPpar" = c("K", "B0", "r", "q", "s.sigma"),
+                                       "fitted_pars" = vals)
+ res
+```
+
 
 Untuk data yang memiliki tipe one way trip, input yang digunakan dalam optimasi perlu disesuaikan terlebih dahulu. Penjelasan lebih lanjut untuk metode ini akan ditulis beberapa waktu kedepan. Selain itu, tool ini sudah disesuaikan untuk kebutuhan data yang terbatas (dapat mengakomodasi hilangnya input data upaya penangkapan) serta sudah memperhitungkan kesalahan dalam pengambilan data (observation error). 
 
