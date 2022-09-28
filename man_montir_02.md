@@ -131,7 +131,7 @@ Ketika `plot=TRUE`, maka secara otomatis akan ditampilkan grafik hasil dimana ga
 Data frame `$Parameter` menyimpan angka estimasi hasil optimasi (`fitted_pars`). Sebagai panduan untuk memeriksa hasil parameter, angka K biasanya selalu lebih tinggi dibanding B0, angka r seharusnya berada pada rentang antara 0-1 dan angka q biasanya berada pada rentang antara 0-0.1.
 
 {: .catatan }
-Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, perhitungan dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
+Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, proses optimasi dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
 
 ```markdown
 
@@ -158,23 +158,24 @@ Untuk data yang memiliki tipe one way trip, input yang digunakan dalam optimasi 
 
 Tool ini mengestimasi jumlah stok ikan yang lestari (Bmsy), jumlah tangkapan ikan lestari (MSY) dan upaya penangkapan ikan lestari (Emsy) serta menghitung standard error menggunakan data runut waktu dengan asumsi non-equilibrium untuk model Schaefer.
 
-Penghitungan standard error dari reference point dapat dilakukan dengan
+Penghitungan standard error dari reference point dapat dilakukan dengan menggunakan output dari analisis sebelumnya sebagai input untuk analisis berikut
+
 ```markdown
 library(montiR)
 
-calc.SE(MSY=50,
-        Emsy=400,
-        Bmsy=500,
+calc.SE(MSY=44.64659,
+        Emsy=326.4116,
+        Bmsy=497.8777,
         s.sigma=0.1,
         df=df.goodcontrast)
 ```
 
-Setelah input diatas dijalankan, akan dihasilkan estimasi parameter untuk Bmsy, MSY, Emsy dengan perhitungan standard error-nya. Untuk kebutuhan pengelolaan, dipersilahkan untuk menggunakan parameter yang dihasilkan berikut:
+Setelah kode diatas dijalankan, akan dihasilkan estimasi parameter untuk Bmsy, MSY, Emsy dengan perhitungan standard error-nya. Untuk kebutuhan pengelolaan, dipersilahkan untuk menggunakan parameter yang dihasilkan berikut:
 
 ```markdown
-  ManagPar  fitted_pars     std_err
-1     Bmsy  45.67794192  2.91996518
-2      MSY 361.82898159 23.80079667
-3     Emsy 526.35195251 44.78012701
-4    sigma   0.04643415  0.00705218
+  ManagPar  fitted_pars      std_err
+1     Bmsy  45.31956545  3.065096475
+2      MSY 359.41474740 24.908587929
+3     Emsy 530.77542342 46.651955308
+4    sigma   0.04765599  0.007520254
 ```
