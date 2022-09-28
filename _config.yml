@@ -32,3 +32,8 @@
 # https://just-the-docs.github.io/just-the-docs/
 remote_theme: just-the-docs/just-the-docs@v0.4.0.rc2
 title: Fish learns to code in R
+
+callouts:
+  catatan:
+    title: Catatan
+    color: bluesky
