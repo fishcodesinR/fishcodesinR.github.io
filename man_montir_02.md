@@ -147,13 +147,13 @@ fit <- optim(par = inpars,
  )
 
  vals <- exp(fit$par)
- res <- list("Parameter" = data.frame("SPpar" = c("K", "B0", "r", "q", "s.sigma"),
-                                       "fitted_pars" = vals)
+ res <- data.frame("SPpar" = c("K", "B0", "r", "q", "s.sigma"),
+                   "fitted_pars" = vals)
  res
 ```
 
 
-Untuk data yang memiliki tipe one way trip, input yang digunakan dalam optimasi perlu disesuaikan terlebih dahulu. Penjelasan lebih lanjut untuk metode ini akan ditulis beberapa waktu kedepan. Selain itu, tool ini sudah disesuaikan untuk kebutuhan data yang terbatas (dapat mengakomodasi hilangnya input data upaya penangkapan) serta sudah memperhitungkan kesalahan dalam pengambilan data (observation error). 
+Untuk data yang memiliki tipe one way trip, input yang digunakan dalam optimasi perlu disesuaikan terlebih dahulu. Penjelasan lebih lanjut untuk metode ini akan ditulis beberapa waktu kedepan. Selain itu, tool ini sudah disesuaikan untuk kebutuhan data yang terbatas (dapat mengakomodasi hilangnya sedikit input data upaya penangkapan). 
 
 #### c. Menghitung standard error dari reference point
 
