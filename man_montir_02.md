@@ -68,7 +68,9 @@ Contoh data yang tidak memiliki kontras yang baik dapat dilihat pada `df.onewayt
 ![Tipe data one way trip](/img/img_onewaytrip0.png)
 
 {: .catatan }
-![Simulasi hasil analisis MSY menggunakan data good contrast dan one-way trip dengan data fitting konvensional](/img/img_goodcontrastonewaytripMSY.png)Grafik berikut menunjukkan pentingnya jumlah dan jenis data yang memiliki kontras, dimana idealnya data berikut akan menghasilkan MSY dengan angka 50. Dapat dilihat pada panel sebelah kiri bahwa data yang memiliki kontras yang baik dengan runtun waktu sebanyak 20 tahun atau lebih akan menghasilkan akurasi yang lebih baik dengan deviasi yang lebih kecil, berbeda halnya dengan data yang memiliki runtun waktu 10 tahun. Ketika menggunakan data dengan tipe one-way trip, dapat dilihat bahwa metode data fitting biasa akan menghasilkan akurasi analisis yang melenceng jauh meskipun menggunakan jumlah data yang cukup.
+Grafik berikut menunjukkan pentingnya jumlah dan jenis data yang memiliki kontras, dimana idealnya data berikut akan menghasilkan MSY dengan angka 50. Dapat dilihat pada panel sebelah kiri bahwa data yang memiliki kontras yang baik dengan runtun waktu sebanyak 20 tahun atau lebih akan menghasilkan akurasi yang lebih baik dengan deviasi yang lebih kecil, berbeda halnya dengan data yang memiliki runtun waktu 10 tahun. Ketika menggunakan data dengan tipe one-way trip, dapat dilihat bahwa metode data fitting biasa akan menghasilkan akurasi analisis yang melenceng jauh meskipun menggunakan jumlah data yang cukup.
+
+![Simulasi hasil analisis MSY menggunakan data good contrast dan one-way trip dengan data fitting konvensional](/img/img_goodcontrastonewaytripMSY.png)
 
 Jenis data yang berbeda harus dianalisis menggunakan cara yang berbeda pula. Hal ini akan dijelaskan lebih lanjut di bagian selanjutnya.
 
@@ -135,7 +137,7 @@ Ketika `plot=TRUE`, maka secara otomatis akan ditampilkan grafik hasil dimana ga
 Data frame `$Parameter` menyimpan angka estimasi hasil optimasi (`fitted_pars`). Sebagai panduan untuk memeriksa hasil parameter, angka K biasanya selalu lebih tinggi dibanding B0, angka r seharusnya berada pada rentang antara 0-1 dan angka q biasanya berada pada rentang antara 0-0.1.
 
 {: .catatan }
-Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, proses optimasi dapat dilakukan secara manual dengan angka awal dapat dibatasi menggunakan batas bawah (lower) dan batas (upper) atas serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
+Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, maka ada dua hal yang dapat diperiksa (i) kemungkinan input kurang sesuai, atau (ii) data kurang sesuai untuk dilakukan optimasi sehingga perlu penambahan constrain. Untuk kasus kedua, proses optimasi dapat dilakukan secara manual dengan angka awal dibatasi menggunakan batas bawah (lower) dan batas atas (upper) serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
 
 ```markdown
 
