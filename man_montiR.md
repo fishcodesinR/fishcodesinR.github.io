@@ -16,3 +16,35 @@ Anda dapat mengunduh dan menginstal package ini dengan mengetikkan kode ini pada
 ```
 devtools::install_github("habeebollah/montiR")
 ```
+
+## Referensi
+Hilborn, Ray, and Carl J. Walters, eds. Quantitative fisheries stock assessment: choice,
+dynamics and uncertainty. Springer Science & Business Media, 1992.
+
+Polacheck, T., Hilborn, R., and A.E. Punt. 1993. Fitting surplus production models:
+Comparing methods and measuring uncertainty. Canadian Journal of Fisheries and Aquatic Sciences, 50: 2597-2607.
+
+Punt, A. E., & Hilborn, R. (1996). Biomass dynamic models. FAO Computerized Information Series Fisheries, 10, 1-62.
+
+Sparre, P., & Venema, S. C. (1998). Introduction to fish stock assessment. Part 1: Manual. FAO Fisheries Technical Paper, 306(1).
+
+Uhler, R. S. (1980). Least squares regression estimates of the Schaefer production model:
+some Monte Carlo simulation results. Canadian Journal of Fisheries and Aquatic Sciences, 37(8), 1284-1294.
+
+Walters, C. J., & Hilborn, R. (1976). Adaptive control of fishing systems. Journal of the Fisheries Board of Canada, 33(1), 145-159.
+
+Schaefer, M. B. (1954). Some aspects of the dynamics of populations important to the management of the commercial marine fisheries.
+
+Fox Jr, W. W. (1970). An exponential surplus‐yield model for optimizing exploited fish populations.
+Transactions of the American Fisheries Society, 99(1), 80-88.
+
+Pella, J. J., & Tomlinson, P. K. (1969). A generalized stock production model.
+
+Schaefer, M. B. (1957). A study of the dynamics of the fishery for yellow fin tuna in the eastern
+tropical Pacific Ocean. Bull. Inter-Amer. Trop. Tuna Comm., 2, 247-285.
+
+Magnusson, A., & Hilborn, R. (2007). What makes fisheries data informative?. Fish and Fisheries, 8(4), 337-358.
+
+Punt, A. E. (2010). Harvest control rules and fisheries management.
+Handbook of marine fisheries conservation and management, 582-594.
+
