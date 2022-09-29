@@ -12,6 +12,8 @@ Penjelasan mengenai latar belakang, kelebihan dan kekurangan dari tiap metode su
 
 Diasumsikan pengguna package ini sudah mengetahui dasar penggunaan R dan sudah menginstal R beserta Rstudio di komputer masing-masing. Diharapkan pengguna paling tidak sudah membaca Chapter 1 dari [buku online ini](https://bookdown.org/moh_rosidi2610/Metode_Numerik/intro.html). 
 
+Langkah analisis yang ditampilkan di website ini dibuat secara ringkas dan sederhana untuk pengguna R pemula. Untuk yang tertarik mengeksplor lebih lanjut mengenai kode R yang digunakan untuk melakukan analisis surplus produksi ini, dipersilahkan untuk membuka [link github](https://github.com/habeebollah/montiR) dan mempelajari langkah-langkah analisis yang digunakan. Kode dibuat sesederhana mungkin agar dapat dengan mudah dipahami oleh pengguna R pemula.
+
 ## Instalasi
 Anda dapat mengunduh dan menginstal package ini dengan mengetikkan kode ini pada konsole di Rstudio:
 ```
