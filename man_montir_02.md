@@ -80,7 +80,7 @@ Jenis data yang berbeda harus dianalisis menggunakan cara yang berbeda pula. Hal
 Tool ini melakukan estimasi parameter K, B0, r, q dan menentukan jumlah tangkapan ikan lestari (MSY), biomassa ikan lestari (Bmsy), serta upaya penangkapan ikan lestari (Emsy) menggunakan data runut waktu dengan asumsi non-equilibrium untuk model Schaefer.
 
 Proses estimasi diawali dengan mencari angka awal yang diperkirakan sesuai dengan parameter K, B0, r, q. Hal ini dilakukan dengan menduga angka parameter, kemudian dilihat apakah grafik yang dihasilkan dari parameter yang kita duga memberikan grafik yang sesuai dengan data yang akan kita lakukan pendugaannya. Misalnya kita akan menduga parameter surplus production dari data `df.namibianCatch`, maka cara estimasinya dilakukan dengan mencari angka awal terlebih dahulu hingga menghasilkan garis observation dan estimation yang fit. 
-![Mengeksplorasi angka awal hingga mendapatkan garis yang fit](/img/img_namibianCatchfit.png)
+![Mengeksplorasi angka awal hingga mendapatkan garis yang fit](/img/img_namibianCatchinit.png)
 
 Mencari angka awal ini dilakukan dengan merubah angka K, r dan q sehingga dirasa grafik hasil dari angka awal (Estimation) dirasa sudah sesuai (fit) dengan data yang akan kita analisis (Observation). Sebagai panduan pada tahapan ini, angka K berada pada kisaran 3 hingga 15 kali angka maksimal tangkapan, angka B0 diset sama dengan K, angka r seharusnya berada pada rentang antara 0-1.3 sesuai spesies ikan dan angka q biasanya berada pada rentang antara 0-0.01.
 
@@ -98,7 +98,7 @@ Par_init(inpars=inpars, df=df.namibianCatch)
 ```
 
 {: .catatan }
-Angka r dapat diestimasi sesuai dengan jenis ikan yang dikaji stoknya. Fishbase dan SeaLifebase mengumpulkan angka r untuk setiap spesies dan dapat dicari secara manual dengan membuka website dua database ini secara langsung. Jika memiliki akses internet, dapat juga langsung mencari kisaran angka r ini dengan mencari melalui `rGrabber(NamaSpesies)` dengan terlebih dahulu mengaktifkan package `rfishbase`. Bisa dilihat, ikan Hake Namibia yang memiliki nama ilmiah Merluccius capensis ini memiliki nilai r sebesar 0.2525 dengan rentang 0.0005-0.5 yang dihasilkan dari informasi resiliensi spesies.
+Parameter pertumbuhan intrinsik r memiliki nilai yang spesifik sesuai dengan jenis ikan (Adams, 1980; Kawasaki, 1980, 1983). Fishbase dan SeaLifebase telah mengumpulkan angka r untuk mayoritas spesies akuatik dan dapat digunakan untuk membantu dalam proses estimasi parameter. Angka pertumbuhan intrinsik ini dapat dicari secara manual dengan membuka website dua database ini secara langsung. Jika memiliki akses internet, dapat juga langsung mencari kisaran angka r ini dengan mencari melalui `rGrabber(NamaSpesies)` dengan terlebih dahulu mengaktifkan package `rfishbase`. Setelah menjalankan kode tersebut dapat dilihat bahwa ikan Hake Namibia yang memiliki nama ilmiah Merluccius capensis ini memiliki nilai r sebesar 0.2525 dengan rentang 0.0005-0.5 yang dihasilkan dari informasi resiliensi spesies, dimana angka r sebesar 0.46 pada input diatas masih berada pada rentang yang disarankan.
 
 
 Setelah angka awal didapat, maka langkah selanjutnya adalah melakukan optimasi parameter melalui Maximum Likelihood Estimation dengan observation error. Observation error menggunakan asumsi bahwa terdapat kesalahan pada hubungan antara biomass dan indeks kelimpahan, sehingga parameter ini perlu untuk diestimasi. Indeks kelimpahan diasumsikan mengikuti distribusi log-normal untuk melakukan estimasi parameter K, B0, r, q dan sigma (observation error).
