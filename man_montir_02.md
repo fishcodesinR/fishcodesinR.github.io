@@ -79,26 +79,31 @@ Jenis data yang berbeda harus dianalisis menggunakan cara yang berbeda pula. Hal
 
 Tool ini melakukan estimasi parameter K, B0, r, q dan menentukan jumlah tangkapan ikan lestari (MSY), biomassa ikan lestari (Bmsy), serta upaya penangkapan ikan lestari (Emsy) menggunakan data runut waktu dengan asumsi non-equilibrium untuk model Schaefer.
 
-Proses estimasi diawali dengan mencari angka awal yang diperkirakan sesuai dengan parameter K, B0, r, q. Hal ini dilakukan dengan menduga angka parameter, kemudian dilihat apakah grafik yang dihasilkan dari parameter yang kita duga memberikan grafik yang sesuai dengan data yang akan kita lakukan pendugaannya. Misalnya kita akan menduga parameter surplus production dari data `df.namibianCatch`, maka cara estimasinya dilakukan dengan mencari angka awal terlebih dahulu dengan:
+Proses estimasi diawali dengan mencari angka awal yang diperkirakan sesuai dengan parameter K, B0, r, q. Hal ini dilakukan dengan menduga angka parameter, kemudian dilihat apakah grafik yang dihasilkan dari parameter yang kita duga memberikan grafik yang sesuai dengan data yang akan kita lakukan pendugaannya. Misalnya kita akan menduga parameter surplus production dari data `df.namibianCatch`, maka cara estimasinya dilakukan dengan mencari angka awal terlebih dahulu hingga menghasilkan garis observation dan estimation yang fit. 
+![Mengeksplorasi angka awal hingga mendapatkan garis yang fit](/img/img_namibianCatchfit.png)
+
+Mencari angka awal ini dilakukan dengan merubah angka K, r dan q sehingga dirasa grafik hasil dari angka awal (Estimation) dirasa sudah sesuai (fit) dengan data yang akan kita analisis (Observation). Sebagai panduan pada tahapan ini, angka K berada pada kisaran 3 hingga 15 kali angka maksimal tangkapan, angka B0 diset sama dengan K, angka r seharusnya berada pada rentang antara 0-1.3 sesuai spesies ikan dan angka q biasanya berada pada rentang antara 0-0.01.
 
 ```markdown
 library('montiR')
 
-K <- 1700
-B0 <- K
-r <- 0.3
-q <- 0.0003
+K <- 2500
+B0 <- 2500
+r <- 0.46
+q <- 0.00045
 
 inpars <- c(K, B0, r, q)
 Par_init(inpars=inpars, df=df.namibianCatch)
 
 ```
 
-Mencari angka awal ini dilakukan dengan merubah angka K, r dan q sehingga dirasa grafik hasil dari angka awal (Estimation) dirasa sudah sesuai (fit) dengan data yang akan kita analisis (Observation). Sebagai panduan pada tahapan ini, angka r seharusnya berada pada rentang antara 0-1.3 sesuai spesies ikan dan angka q biasanya berada pada rentang antara 0-0.1.
+{: .catatan }
+Angka r dapat diestimasi sesuai dengan jenis ikan yang dikaji stoknya. Fishbase dan SeaLifebase mengumpulkan angka r untuk setiap spesies dan dapat dicari secara manual dengan membuka website dua database ini secara langsung. Jika memiliki akses internet, dapat juga langsung mencari kisaran angka r ini dengan mencari melalui `rGrabber(NamaSpesies)` dengan terlebih dahulu mengaktifkan package `rfishbase`. Bisa dilihat, ikan Hake Namibia yang memiliki nama ilmiah Merluccius capensis ini memiliki nilai r sebesar 0.2525 dengan rentang 0.0005-0.5 yang dihasilkan dari informasi resiliensi spesies.
+
 
 Setelah angka awal didapat, maka langkah selanjutnya adalah melakukan optimasi parameter melalui Maximum Likelihood Estimation dengan observation error. Observation error menggunakan asumsi bahwa terdapat kesalahan pada hubungan antara biomass dan indeks kelimpahan, sehingga parameter ini perlu untuk diestimasi. Indeks kelimpahan diasumsikan mengikuti distribusi log-normal untuk melakukan estimasi parameter K, B0, r, q dan sigma (observation error).
 
-Proses estimasi parameter ini dilakukan dengan langkah sebagai berikut:
+Proses estimasi parameter dilakukan menggunakan data `df.goodcontrast` dengan langkah sebagai berikut:
 
 ```markdown
 library('montiR')
@@ -117,22 +122,22 @@ Setelah input diatas dijalankan, akan dihasilkan estimasi parameter K, B0, r, q 
 ```markdown
 $Parameter
     SPpar  fitted_pars
-1       K 9.957554e+02
-2      B0 8.793875e+02
-3       r 1.793476e-01
-4       q 2.747262e-04
-5 s.sigma 4.524280e-02
+1       K 1.101868e+03
+2      B0 1.090818e+03
+3       r 1.689499e-01
+4       q 2.238730e-04
+5 s.sigma 4.380054e-02
 
 $MSY
        MSY     Emsy     Bmsy E.rate_MSY E.rate_Emsy
-1 44.64659 326.4116 497.8777  0.3886082  0.05315383
+1 46.54015 377.3343 550.9342  0.3514896  0.04335249
 ```
 
 Ketika `plot=TRUE`, maka secara otomatis akan ditampilkan grafik hasil dimana garis estimation (warna merah) akan fit dengan garis data observation (warna biru).
 
 ![Perbandingan fitting dari data Observation dan Estimation](/img/img_goodcontrastfitted.png)
 
-Data frame `$Parameter` menyimpan angka estimasi hasil optimasi (`fitted_pars`). Sebagai panduan untuk memeriksa hasil parameter, angka K biasanya selalu lebih tinggi dibanding B0, angka r seharusnya berada pada rentang antara 0-1 dan angka q biasanya berada pada rentang antara 0-0.1.
+Data frame `$Parameter` menyimpan angka estimasi hasil optimasi (`fitted_pars`). Sebagai panduan untuk memeriksa hasil parameter, angka K biasanya selalu lebih tinggi dibanding B0, angka r seharusnya berada pada rentang antara 0-1 dan angka q biasanya berada pada rentang antara 0-0.01.
 
 {: .catatan }
 Jika angka hasil optimasi masih belum sesuai dengan panduan sederhana ini, maka ada dua hal yang dapat diperiksa (i) kemungkinan input kurang sesuai, atau (ii) data kurang sesuai untuk dilakukan optimasi dengan cara biasa sehingga perlu penambahan constrain. Untuk kasus kedua, proses optimasi dapat dilakukan secara manual dengan angka awal dibatasi menggunakan batas bawah (lower) dan batas atas (upper) serta merubah metode optimasi menjadi "L-BFGS-B". Penggunaan constrain seperti yang dilakukan dibawah ini membutuhkan pemahaman tentang perkiraan jumlah stok sehingga perlu dilakukan dengan hati-hati untuk dapat menghasilkan estimasi yang akurat.
@@ -156,7 +161,7 @@ fit <- optim(par = inpars,
 
 Untuk data yang memiliki tipe one way trip, input yang digunakan dalam optimasi perlu disesuaikan terlebih dahulu. Penjelasan lebih lanjut untuk metode ini akan ditulis beberapa waktu kedepan. Selain itu, tool ini sudah disesuaikan untuk kebutuhan data yang terbatas (dapat mengakomodasi hilangnya sedikit input data upaya penangkapan). 
 
-### c. Menghitung standard error dari reference point
+### c. Menghitung standard error dan confidence interval dari reference point
 
 Tool ini mengestimasi jumlah stok ikan yang lestari (Bmsy), jumlah tangkapan ikan lestari (MSY) dan upaya penangkapan ikan lestari (Emsy) serta menghitung standard error menggunakan data runut waktu dengan asumsi non-equilibrium untuk model Schaefer.
 
@@ -165,10 +170,10 @@ Penghitungan standard error dari reference point dapat dilakukan dengan mengguna
 ```markdown
 library(montiR)
 
-calc.SE(MSY=44.64659,
-        Emsy=326.4116,
-        Bmsy=497.8777,
-        s.sigma=0.1,
+calc.SE(MSY=46.54015,
+        Emsy=377.3343,
+        Bmsy=550.9342,
+        s.sigma=4.380054e-02,
         df=df.goodcontrast)
 ```
 
@@ -176,8 +181,28 @@ Setelah kode diatas dijalankan, akan dihasilkan estimasi parameter untuk Bmsy, M
 
 ```markdown
   ManagPar  fitted_pars      std_err
-1     Bmsy  45.31956545  3.065096475
-2      MSY 359.41474740 24.908587929
-3     Emsy 530.77542342 46.651955308
-4    sigma   0.04765599  0.007520254
+1     Bmsy  46.54049070  3.063154812
+2      MSY 377.33435477 25.400928220
+3     Emsy 545.53973460 47.890948600
+4    sigma   0.04392642  0.006966182
 ```
+
+Selain itu, dapat juga dihitung rentang kepercayaan dari MSY dengan metode profile likelihood. Penghitungan ini dilakukan dengan memasukkan angka MSY dan r dari perhitungan sebelumnya:
+
+```markdown
+calc.CI(MSYval=46.54015,
+        rval= 1.689499e-01,
+        df=df.goodcontrast,
+        plot=TRUE)
+```
+
+yang akan menghasilkan angka terbaik dugaan untuk MSY serta 95% rentang kepercayaan dari angka MSY tersebut. Dimana angka MSY dihitung dan memiliki rentang bawah dan atas sebagaimana dibawah
+
+```markdown
+       MSY  lowerCI  upperCI
+1 46.67059 29.89937 58.82041
+```
+
+Bisa dilihat pada gambar dibawah dimana nilai terbaik MSY menyentuh garis merah, kemudian rentang kepercayaan bagian bawah dan atas menyentuh pada grais abu-abu di sebelah kanan dan kiri kurva.
+![Likelihood profile](/img/img_goodcontrastlhood.png)
+
