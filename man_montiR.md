@@ -27,33 +27,33 @@ library("montiR")
 
 
 ## Referensi
-Hilborn, Ray, and Carl J. Walters, eds. Quantitative fisheries stock assessment: choice,
-dynamics and uncertainty. Springer Science & Business Media, 1992.
+Adams, P. 1980. Life history patterns in marine fishes and their consequences for fisheries management, Fishery Bulletin, 78(1), pp. 1–12.
 
-Polacheck, T., Hilborn, R., and A.E. Punt. 1993. Fitting surplus production models:
-Comparing methods and measuring uncertainty. Canadian Journal of Fisheries and Aquatic Sciences, 50: 2597-2607.
+Fox Jr, W. W. 1970. An exponential surplus‐yield model for optimizing exploited fish populations. Transactions of the American Fisheries Society, 99(1), 80-88.
 
-Punt, A. E., & Hilborn, R. (1996). Biomass dynamic models. FAO Computerized Information Series Fisheries, 10, 1-62.
+Hilborn, Ray, and Carl J. Walters, eds. Quantitative fisheries stock assessment: choice, dynamics and uncertainty. Springer Science & Business Media, 1992.
 
-Sparre, P., & Venema, S. C. (1998). Introduction to fish stock assessment. Part 1: Manual. FAO Fisheries Technical Paper, 306(1).
+Kawasaki, T. 1980. Fundamental Relations among the Selections of Life History in the Marine Teleosts, Bulletin of the Japanese Society of Scientific Fisheriess, 463(3), pp. 289–293.
 
-Uhler, R. S. (1980). Least squares regression estimates of the Schaefer production model:
-some Monte Carlo simulation results. Canadian Journal of Fisheries and Aquatic Sciences, 37(8), 1284-1294.
+Kawasaki, T. 1983. Why do some pelagic fishes have wide fluctuations in their numbers? Biological basis of fluctuation from the viewpoint of evolutionary ecology, FAO Fisheries Report (FAO).
 
-Walters, C. J., & Hilborn, R. (1976). Adaptive control of fishing systems. Journal of the Fisheries Board of Canada, 33(1), 145-159.
+Magnusson, A., & Hilborn, R. 2007. What makes fisheries data informative?. Fish and Fisheries, 8(4), 337-358.
+Pella, J. J., & Tomlinson, P. K. 1969. A generalized stock production model.
 
-Schaefer, M. B. (1954). Some aspects of the dynamics of populations important to the management of the commercial marine fisheries.
+Polacheck, T., Hilborn, R., and A.E. Punt. 1993. Fitting surplus production models: Comparing methods and measuring uncertainty. Canadian Journal of Fisheries and Aquatic Sciences, 50: 2597-2607.
 
-Fox Jr, W. W. (1970). An exponential surplus‐yield model for optimizing exploited fish populations.
-Transactions of the American Fisheries Society, 99(1), 80-88.
+Punt, A. E. 2010. Harvest control rules and fisheries management. Handbook of marine fisheries conservation and management, 582-594.
 
-Pella, J. J., & Tomlinson, P. K. (1969). A generalized stock production model.
+Punt, A. E., & Hilborn, R. 1996. Biomass dynamic models. FAO Computerized Information Series Fisheries, 10, 1-62.
 
-Schaefer, M. B. (1957). A study of the dynamics of the fishery for yellow fin tuna in the eastern
-tropical Pacific Ocean. Bull. Inter-Amer. Trop. Tuna Comm., 2, 247-285.
+Schaefer, M. B. 1954. Some aspects of the dynamics of populations important to the management of the commercial marine fisheries.
 
-Magnusson, A., & Hilborn, R. (2007). What makes fisheries data informative?. Fish and Fisheries, 8(4), 337-358.
+Schaefer, M. B. 1957. A study of the dynamics of the fishery for yellow fin tuna in the eastern tropical Pacific Ocean. Bull. Inter-Amer. Trop. Tuna Comm., 2, 247-285.
 
-Punt, A. E. (2010). Harvest control rules and fisheries management.
-Handbook of marine fisheries conservation and management, 582-594.
+Sparre, P., & Venema, S. C. 1998. Introduction to fish stock assessment. Part 1: Manual. FAO Fisheries Technical Paper, 306(1). 
+
+Uhler, R. S. 1980. Least squares regression estimates of the Schaefer production model: some Monte Carlo simulation results. Canadian Journal of Fisheries and Aquatic Sciences, 37(8), 1284-1294.
+
+Walters, C. J., & Hilborn, R. 1976. Adaptive control of fishing systems. Journal of the Fisheries Board of Canada, 33(1), 145-159.
+
 
