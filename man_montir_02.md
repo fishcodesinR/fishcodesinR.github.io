@@ -37,16 +37,17 @@ $q$ = catchability
 $\epsilon$ = observation error
 
 
-Penggunaan `montiR` diawali dengan penyediaan data yang meliputi data tahun, data tangkapan serta data upaya yang dibuat dalam dataframe. Berikut adalah contoh untuk membuat dataframe sebagai input untuk analisis `montiR` menggunakan data tangkapan Yellowfin Tuna di East Pacific (Schaefer, 1957).
+Penggunaan `montiR` diawali dengan penyediaan data yang meliputi data tahun, data tangkapan serta data catch per unit effort yang dibuat dalam dataframe. Berikut adalah contoh untuk membuat dataframe sebagai input untuk analisis `montiR` menggunakan data tangkapan Yellowfin Tuna di East Pacific (Schaefer, 1957).
 
 ```markdown
 df <- data.frame(year=c(1934:1955),
                  catch=c(60913,72294,78353,91522,78288,110417,114590,76841,41965,50058,64094,
                         89194,129701,160134,200340,192458,224810,183685,192234,138918,138623,140581),
-                 effort=c(5879,6295,6771,8233,6830,10488,10801,9584,5961,5930,6397,9377,13958,
-                        20381,23984,23013,31856,18726,31529,36423,24995,17806))
+                 cpue=c(10361,11484,11571,11116,11463,10528,10609,8018,7040,8441,10019,9512,9292,
+                        7857,8353,8363,7057,9809,6097,3814,5546,7895))
 ```
 
+Pada tahap ini diharapkan data catch per unit effort sudah melalui langkah data standardization yang idealnya diolah dengan analisis menggunakan Generalized Linear Model.
 
 ### a. Data plotting
 
@@ -72,8 +73,6 @@ Grafik berikut menunjukkan pentingnya jumlah dan jenis data yang memiliki kontra
 ![Simulasi hasil analisis MSY menggunakan data good contrast dan one-way trip dengan data fitting konvensional](/img/img_goodcontrastonewaytripMSY.png)
 
 Jenis data yang berbeda harus dianalisis menggunakan cara yang berbeda pula. Hal ini akan dijelaskan lebih lanjut di bagian selanjutnya.
-
-Pada tahap ini diharapkan data sudah melalui langkah data standardization yang biasanya diolah dengan menggunakan Generalized Linear Model.
 
 
 ### b. Estimasi parameter surplus production dengan data fitting
