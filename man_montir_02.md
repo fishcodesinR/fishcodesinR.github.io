@@ -6,37 +6,6 @@ nav_order: 1
 
 ## Penghitungan Surplus production dengan asumsi non-equilibrium menggunakan data fitting
 
-Metode time series fitting dengan observation error disebut sebagai metode yang lebih baik dibandingkan dengan dua metode lain (metode equilibrium dengan linear regression maupun multiple regression) yang digunakan untuk melakukan estimasi parameter dalam model surplus produksi, termasuk juga menghasilkan estimasi yang lebih akurat dibanding dengan metode time series fitting dengan process error (Hilborn dan Walter, 1992; Polacheck, et al. 1993; Punt dan Hilborn, 1996). Disini akan dibahas langkah yang disarankan untuk melakukan analisis dengan data fitting untuk meningkatkan akurasi perhitungan MSY, Bmsy dan Emsy.
-
-Pendekatan ini selanjutnya lebih dikenal dengan sebutan Biomass Dynamic Model, dengan variasi menggunakan metode yang berdasarkan dari Schaefer (1954), Fox (1970) dan Pella-Tomlinson (1969). Saat ini `montiR` dibangun dengan model Schaefer yang dituliskan dengan
-
-$B_{t+1} = {B_{t} + rB_{t} (1- {B_{t} \over K}) - C_{t}}$
-
-dimana:
-
-$B_{t}$ = biomass yang dimanfaatkan pada awal tahun $t$
-
-$r$ = laju pertumbuhan intrinsik
-
-$K$ = carrying capacity
-
-$C_{t}$ = jumlah tangkapan (volume) pada tahun $t$
-
-dengan
-
-$I_{t+1} = {C_{t} \over E_{t}} = q B_{t} e^\epsilon$
-
-dimana: 
-
-$I_{t}$ = catch per unit of effort (CPUE) atau indeks kelimpahan pada tahun $t$
-
-$E_{t}$ = upaya penangkapan pada tahun $t$
-
-$q$ = catchability
-
-$\epsilon$ = observation error
-
-
 Penggunaan `montiR` diawali dengan penyediaan data yang meliputi data tahun, data tangkapan serta data catch per unit effort yang dibuat dalam dataframe. Berikut adalah contoh untuk membuat dataframe sebagai input untuk analisis `montiR` menggunakan data tangkapan Yellowfin Tuna di East Pacific (Schaefer, 1957).
 
 ```markdown
